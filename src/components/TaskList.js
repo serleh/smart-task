@@ -1,16 +1,21 @@
-export default function TaskList({ tasks, onToggleTask }) {
+export default function TaskList({ tasks, onToggleTask, onDeleteTask }) {
   return (
     <div className="task-list container">
       <ul className="list-item">
         {tasks.map((task) => (
-          <Task task={task} key={task.id} onToggleTask={onToggleTask} />
+          <Task
+            task={task}
+            key={task.id}
+            onToggleTask={onToggleTask}
+            onDeleteTask={onDeleteTask}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Task({ task, onToggleTask }) {
+function Task({ task, onToggleTask, onDeleteTask }) {
   const categoryIcons = {
     work: "💼",
     personal: "🏠",
@@ -23,10 +28,22 @@ function Task({ task, onToggleTask }) {
         value={task.completed}
         onChange={() => onToggleTask(task.id)}
       />
-      <span>{task.thingTodo}</span>
+      <span>
+        <b>{task.thingTodo}</b>
+      </span>
       <p>
-        {categoryIcons[task.category]} {task.category} - {task.date}
+        <span
+          className={`${task.category} active`}
+          style={{ fontSize: "13px", padding: "3px", borderRadius: "6px" }}
+        >
+          {categoryIcons[task.category]}
+          {task.category}
+        </span>
+        - {task.date}
       </p>
+      <span className="remove" onClick={() => onDeleteTask(task.id)}>
+        ❌
+      </span>
     </li>
   );
 }

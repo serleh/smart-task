@@ -207,3 +207,10 @@ img {
   text-decoration: line-through;
   color: gray;
 }
+
+.remove {
+  cursor: pointer;
+  margin-left: 90%;
+  text-align: center;
+  margin-bottom: 60px;
+}

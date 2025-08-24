@@ -28,6 +28,10 @@ export default function App() {
     setTasks((tasks) => [...tasks, task]);
   }
 
+  function handleDeleteTask(id) {
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
   function handleToggleTask(id) {
     setTasks((tasks) =>
       tasks.map((task) =>
@@ -42,7 +46,11 @@ export default function App() {
       <TaskInfo tasks={tasks} />
       <Search />
       <TaskFilter />
-      <TaskList tasks={tasks} onToggleTask={handleToggleTask} />
+      <TaskList
+        tasks={tasks}
+        onToggleTask={handleToggleTask}
+        onDeleteTask={handleDeleteTask}
+      />
     </div>
   );
 }
