@@ -24,6 +24,11 @@ import { useState } from "react";
 // ];
 export default function App() {
   const [tasks, setTasks] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const filteredTasks = tasks.filter((task) =>
+    task.thingTodo.toLowerCase().includes(search.toLowerCase())
+  );
   function handleAddTasks(task) {
     setTasks((tasks) => [...tasks, task]);
   }
@@ -39,15 +44,16 @@ export default function App() {
       )
     );
   }
+
   return (
     <div className="container">
       <Header />
       <Form onAddTask={handleAddTasks} />
       <TaskInfo tasks={tasks} />
-      <Search />
+      <Search search={search} setSearch={setSearch} />
       <TaskFilter />
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         onToggleTask={handleToggleTask}
         onDeleteTask={handleDeleteTask}
       />
