@@ -82,6 +82,25 @@ img {
   transition: background-color 0.3s color 0.3s;
 }
 
+/*active*/
+.work.active {
+  background-color: #eff6ff;
+  color: blue;
+  border: 1px solid blue;
+}
+
+.personal.active {
+  background-color: #f0fdf4;
+  color: lightgreen;
+  border: 1px solid lightgreen;
+}
+
+.study.active {
+  border: 1px solid purple;
+  color: purple;
+  background-color: #faf5ff;
+}
+
 /* Hover*/
 
 .work:hover {
@@ -182,4 +201,9 @@ img {
   padding: 15px 6px;
   border-left: 4px solid green;
   border-radius: 8px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
 }

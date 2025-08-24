@@ -1,25 +1,29 @@
-export default function TaskInfo() {
+export default function TaskInfo({ tasks }) {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((task) => task.completed).length;
+  const successRate = Math.round((completedTasks / totalTasks) * 100);
+  console.log(totalTasks);
   return (
     <div className="container info">
       <div className="total-task">
         <p>
           Total Tasks
           <span>
-            🎯 <b>0</b>
+            🎯 <b>{totalTasks}</b>
           </span>
         </p>
       </div>
       <div className="completed-task">
         <p>Completed</p>
         <span>
-          ✅ <b>0</b>
+          ✅ <b>{completedTasks}</b>
         </span>
       </div>
       <div className="success-rate">
         <p>
           Success Rate
           <span>
-            💹 <b>0%</b>
+            💹 <b>{successRate}%</b>
           </span>
         </p>
       </div>
