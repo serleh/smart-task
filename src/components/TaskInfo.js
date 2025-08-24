@@ -23,7 +23,7 @@ export default function TaskInfo({ tasks }) {
         <p>
           Success Rate
           <span>
-            💹 <b>{successRate}%</b>
+            💹 <b>{successRate ? successRate : "0"}%</b>
           </span>
         </p>
       </div>
